@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model List<ShopNET.Models.Product>
+
+@{
+    ViewData["Title"] = "Our Product";
+}
+
+<h2 style="margin:20px">Our Products</h2>
+<div style="display:flex; flex-wrap:wrap; gap: 20px; margin:20px;">
+    @foreach (var product in Model)
+    {
+        <div style="border:1px solid #ddd; border-radius:8px; padding:20px; width:250px;">
+            <h4>@product.Name</h4>
+            <p> Stock : @product.Stock</p>
+            <a href="#" style="color:blue">View Details</a>
+        </div>    
+    }
+</div>
