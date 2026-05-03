@@ -1,29 +1,40 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@model ShopNET.Models.Product
-
+﻿@model ShopNET.Models.Product
 
 @{
     ViewData["Title"] = Model.Name;
 }
 
-<div style="margin:30px; max-width:600px;">
-
-    <a href="/Product" style="color:gray;">← Back to Products</a>
-
-    <h2 style="margin-top:20px;">@Model.Name</h2>
-    <p style="color:gray;">@Model.Description</p>
-
-    <div style="margin:20px 0;">
-        <span style="font-size:28px; font-weight:bold;">$@Model.Price</span>
+<div class="row">
+    <div class="col-md-6">
+        <div class="bg-light rounded d-flex align-items-center justify-content-center" style="height:350px;">
+            <span class="text-muted">No image yet</span>
+        </div>
     </div>
+    <div class="col-md-6">
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/Product">Products</a></li>
+                <li class="breadcrumb-item active">@Model.Name</li>
+            </ol>
+        </nav>
 
-    <p>Stock available: @Model.Stock</p>
+        <h2>@Model.Name</h2>
+        <p class="text-muted">@Model.Description</p>
 
-    <button style="background:#007bff; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">
-        Add to Cart
-    </button>
+        <h3 class="text-success my-3">$@Model.Price</h3>
 
+        <p class="text-muted">
+            @if (Model.Stock > 0)
+            {
+                <span class="badge bg-success">In Stock (@Model.Stock units)</span>
+            }
+            else
+            {
+                <span class="badge bg-danger">Out of Stock</span>
+            }
+        </p>
+
+        <button class="btn btn-dark btn-lg w-100 mt-3">Add to Cart</button>
+        <a href="/Product" class="btn btn-outline-secondary w-100 mt-2">← Back to Products</a>
+    </div>
 </div>
